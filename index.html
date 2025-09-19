@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Showcase - AR Button</title>
+
+  <!-- CDN Styles for AR Button -->
+  <link rel="stylesheet" href="https://unpkg.com/@leoncvlt/ar-button/styles.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100vh;
+      background: #f4f4f4;
+      text-align: center;
+    }
+    .product {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 400px;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    h1 {
+      margin: 15px 0 10px;
+    }
+    p {
+      color: #555;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      background: #0077ff;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" alt="Product Preview">
+    <h1>Space Astronaut Figure</h1>
+    <p>Explore this astronaut model in Augmented Reality!</p>
+
+    <!-- Example 1: CDN / Web Component -->
+    <ar-button
+      src="https://github.com/leoncvlt/ar-button/raw/master/assets/Astronaut.glb"
+      ios-src="https://github.com/leoncvlt/ar-button/raw/master/assets/Astronaut.usdz"
+      link="https://www.nasa.gov/"
+      title="A 3D model of an astronaut">
+        🚀 See in Augmented Reality
+    </ar-button>
+
+    <!-- Example 2: Manual Trigger (activateAR) -->
+    <button id="triggerAR">Launch AR via JS</button>
+  </div>
+
+  <!-- CDN Script for AR Button -->
+  <script type="module" src="https://unpkg.com/@leoncvlt/ar-button"></script>
+
+  <script type="module">
+    import { activateAR } from "https://unpkg.com/@leoncvlt/ar-button";
+
+    document.getElementById("triggerAR").addEventListener("click", () => {
+      activateAR({
+        src: "https://github.com/leoncvlt/ar-button/raw/master/assets/Astronaut.glb",
+        iosSrc: "https://github.com/leoncvlt/ar-button/raw/master/assets/Astronaut.usdz",
+        link: "https://www.nasa.gov/",
+        title: "A 3D model of an astronaut"
+      });
+    });
+  </script>
+
+</body>
+</html>
