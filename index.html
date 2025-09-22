@@ -67,14 +67,41 @@
         🚀 See in Augmented Reality
     </ar-button>
 
-    <iframe style="border: none; width: 100%; height: 300px; margin-top: 20px;" src="8th.io/z38g5"></iframe>  
+   <div class="inline-ar-container">
+  <!-- Preview image or animated GIF -->
+  <img src="preview.gif" alt="AR Preview" class="preview" id="preview">
+
+  <!-- Start AR button -->
+  <button id="start-ar">Start AR</button>
+
+  <!-- AR iframe (hidden by default) -->
+  <iframe 
+    id="ar-frame"
+    src="https://vmstech.8thwall.app/festive-btl/"
+    allow="camera; microphone; gyroscope; accelerometer; fullscreen"
+    style="width: 100%; height: 600px; border: none; display: none;">
+  </iframe>
+</div>
+
+
 <a data-8code="z38g5"></a>
 <script src="//cdn.8thwall.com/web/share/embed8.js"></script>
 
   </div>
 
   <!-- CDN Script for AR Button -->
-  <script type="module" src="https://unpkg.com/@leoncvlt/ar-button"></script>   
+  <script type="module" src="https://unpkg.com/@leoncvlt/ar-button"></script> 
+  <script>
+  const startBtn = document.getElementById('start-ar');
+  const iframe = document.getElementById('ar-frame');
+  const preview = document.getElementById('preview');
+
+  startBtn.addEventListener('click', () => {
+    preview.style.display = 'none';
+    startBtn.style.display = 'none';
+    iframe.style.display = 'block'; // Show AR iframe
+  });
+</script>  
 
 </body>
 </html>
