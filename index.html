@@ -67,41 +67,69 @@
         🚀 See in Augmented Reality
     </ar-button>
 
-   <div class="inline-ar-container">
-  <!-- Preview image or animated GIF -->
-  <img src="preview.gif" alt="AR Preview" class="preview" id="preview">
 
-  <!-- Start AR button -->
-  <button id="start-ar">Start AR</button>
 
-  <!-- AR iframe (hidden by default) -->
-  <iframe 
-    id="ar-frame"
-    src="https://vmstech.8thwall.app/festive-btl/"
-    allow="camera; microphone; gyroscope; accelerometer; fullscreen"
-    style="width: 100%; height: 600px; border: none; display: none;">
+<div class="inline-ar-container" style="margin-bottom: 50px;">
+  <!-- Preview + Button for first AR -->
+  <img id="preview1" src="preivew.png" alt="AR Preview" class="preview" id="preview">
+  <button id="start-ar-1">Start AR 1</button>
+  <iframe id="ar-frame-1" src="https://vmstech.8thwall.app/festive-btl/" 
+          allow="camera; microphone; gyroscope; accelerometer; fullscreen"
+          style="width:100%; height:600px; border:none; display:none;">
+  </iframe>
+</div>
+
+<div class="inline-ar-container">
+  <!-- Preview + Button for second AR -->
+  <img id="preview2" src="preivew.png" alt="AR Preview" class="preview" id="preview">
+  <button id="start-ar-2">Start AR 2</button>
+  <iframe id="ar-frame-2" src="https://vmstech.8thwall.app/festive-atl/" 
+          allow="camera; microphone; gyroscope; accelerometer; fullscreen"
+          style="width:100%; height:600px; border:none; display:none;">
   </iframe>
 </div>
 
 
-<a data-8code="z38g5"></a>
-<script src="//cdn.8thwall.com/web/share/embed8.js"></script>
 
-  </div>
+</div>
+
+
+<a data-8code="z38g5"></a>
+
+</div>
+<script src="//cdn.8thwall.com/web/share/embed8.js"></script>
 
   <!-- CDN Script for AR Button -->
   <script type="module" src="https://unpkg.com/@leoncvlt/ar-button"></script> 
-  <script>
-  const startBtn = document.getElementById('start-ar');
-  const iframe = document.getElementById('ar-frame');
-  const preview = document.getElementById('preview');
+<script>
+  // AR 1
+  const preview1 = document.getElementById('preview1');
+  const btn1 = document.getElementById('start-ar-1');
+  const iframe1 = document.getElementById('ar-frame-1');
 
-  startBtn.addEventListener('click', () => {
-    preview.style.display = 'none';
-    startBtn.style.display = 'none';
-    iframe.style.display = 'block'; // Show AR iframe
-  });
-</script>  
+  function startAR1() {
+    preview1.style.display = 'none';
+    btn1.style.display = 'none';
+    iframe1.style.display = 'block';
+  }
+
+  preview1.addEventListener('click', startAR1);
+  btn1.addEventListener('click', startAR1);
+
+  // AR 2
+  const preview2 = document.getElementById('preview2');
+  const btn2 = document.getElementById('start-ar-2');
+  const iframe2 = document.getElementById('ar-frame-2');
+
+  function startAR2() {
+    preview2.style.display = 'none';
+    btn2.style.display = 'none';
+    iframe2.style.display = 'block';
+  }
+
+  preview2.addEventListener('click', startAR2);
+  btn2.addEventListener('click', startAR2);
+</script>
 
 </body>
 </html>
