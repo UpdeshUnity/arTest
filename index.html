@@ -132,17 +132,13 @@
       const container = document.getElementById('ar-container');
 
       function startAR() {
-        if (isIOS) {
-          // 🍎 iOS: open in a new tab for stable AR
-          window.location.href = AR_URL;
-        } else {
+        
           // 🤖 Android / Desktop: show inline AR
           preview.style.display = 'none';
           startBtn.style.display = 'none';
           iframe.style.display = 'block';
           closeBtn.style.display = 'block';
           fullscreenBtn.style.display = 'block';
-        }
       }
 
       function closeAR() {
