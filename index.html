@@ -73,52 +73,70 @@
       border: none;
       border-radius: 6px;
     }
+    /* iOS GPU acceleration trick */
+    iframe {
+      transform: translateZ(0);
+      will-change: transform;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Inline AR 1 -->
+  <!-- Inline AR Container -->
   <div class="inline-ar-container">
-    <img id="preview1" src="preivew.png" alt="AR Preview 1">
-    <button id="start-ar-1">Start AR 1</button>
+    <img id="preview1" src="preview.png" alt="AR Preview 1">
+    <button id="start-ar-1">Start AR</button>
     <button id="close-ar-1" class="close-ar">Back</button>
-    <iframe id="ar-frame-1" 
-            src="https://vmstech.8thwall.app/festive-btl/" 
-            allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;"
-            style="width:100%; height:600px; border:none; display:none;">
+
+    <iframe id="ar-frame-1"
+      src="https://vmstech.8thwall.app/festive-btl/"
+      allow="camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; magnetometer;"
+      allowfullscreen
+      playsinline
+      style="width:100%; height:600px; border:none; display:none;">
     </iframe>
   </div>
 
-<script src="//cdn.8thwall.com/web/iframe/iframe.js"></script>
-<script src="//cdn.8thwall.com/web/iframe/iframe-inner.js"></script>
-<script>
-function setupAR(previewId, startId, iframeId, closeId) {
-  const preview = document.getElementById(previewId);
-  const startBtn = document.getElementById(startId);
-  const iframe = document.getElementById(iframeId);
-  const closeBtn = document.getElementById(closeId);
+  <script src="//cdn.8thwall.com/web/iframe/iframe.js"></script>
+  <script src="//cdn.8thwall.com/web/iframe/iframe-inner.js"></script>
+  <script>
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const AR_URL = "https://vmstech.8thwall.app/festive-btl/";
 
-  function startAR() {
-    preview.style.display = 'none';
-    startBtn.style.display = 'none';
-    iframe.style.display = 'block';
-    closeBtn.style.display = 'block';
-  }
+    function setupAR(previewId, startId, iframeId, closeId) {
+      const preview = document.getElementById(previewId);
+      const startBtn = document.getElementById(startId);
+      const iframe = document.getElementById(iframeId);
+      const closeBtn = document.getElementById(closeId);
 
-  function closeAR() {
-    iframe.style.display = 'none';
-    closeBtn.style.display = 'none';
-    preview.style.display = 'block';
-    startBtn.style.display = 'block';
-  }
+      function startAR() {
+        if (isIOS) {
+          // 🍎 iOS → Open AR in a new tab or same tab for full stability
+          window.location.href = AR_URL;
+        } else {
+          // 🤖 Android → use inline iframe as before
+          preview.style.display = 'none';
+          startBtn.style.display = 'none';
+          iframe.style.display = 'block';
+          closeBtn.style.display = 'block';
+        }
+      }
 
-  preview.addEventListener('click', startAR);
-  startBtn.addEventListener('click', startAR);
-  closeBtn.addEventListener('click', closeAR);
-}
+      function closeAR() {
+        iframe.style.display = 'none';
+        closeBtn.style.display = 'none';
+        preview.style.display = 'block';
+        startBtn.style.display = 'block';
+      }
 
-// Initialize AR containers
-setupAR('preview1', 'start-ar-1', 'ar-frame-1', 'close-ar-1');
-</script>
+      preview.addEventListener('click', startAR);
+      startBtn.addEventListener('click', startAR);
+      closeBtn.addEventListener('click', closeAR);
+    }
+
+    // Initialize AR container
+    setupAR('preview1', 'start-ar-1', 'ar-frame-1', 'close-ar-1');
+  </script>
+
 </body>
 </html>
