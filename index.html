@@ -77,19 +77,6 @@
 </head>
 <body>
 
-  <div class="product">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" alt="Product Preview">
-    <h1>Space Astronaut Figure</h1>
-    <p>Explore this astronaut model in Augmented Reality!</p>
-
-    <!-- AR Button -->
-    <ar-button
-      src="https://github.com/UpdeshUnity/arTest/raw/main/IslandNew.glb"
-      ios-src="https://github.com/leoncvlt/ar-button/raw/master/assets/Astronaut.usdz">
-        🚀 See in Augmented Reality
-    </ar-button>
-  </div>
-
   <!-- Inline AR 1 -->
   <div class="inline-ar-container">
     <img id="preview1" src="preivew.png" alt="AR Preview 1">
@@ -102,17 +89,6 @@
     </iframe>
   </div>
 
-  <!-- Inline AR 2 -->
-  <div class="inline-ar-container">
-    <img id="preview2" src="preivew.png" alt="AR Preview 2">
-    <button id="start-ar-2">Start AR 2</button>
-    <button id="close-ar-2" class="close-ar">Back</button>
-    <iframe id="ar-frame-2" 
-            src="https://vmstech.8thwall.app/festive-atl/" 
-            allow="camera; microphone; gyroscope; accelerometer; fullscreen"
-            style="width:100%; height:600px; border:none; display:none;">
-    </iframe>
-  </div>
 
 <script>
 function setupAR(previewId, startId, iframeId, closeId) {
@@ -142,15 +118,6 @@ function setupAR(previewId, startId, iframeId, closeId) {
 
 // Initialize AR containers
 setupAR('preview1', 'start-ar-1', 'ar-frame-1', 'close-ar-1');
-setupAR('preview2', 'start-ar-2', 'ar-frame-2', 'close-ar-2');
 </script>
-
-<!-- 8th Wall Embed (if needed) -->
-<a data-8code="z38g5"></a>
-<script src="//cdn.8thwall.com/web/share/embed8.js"></script>
-
-<!-- AR Button Script -->
-<script type="module" src="https://unpkg.com/@leoncvlt/ar-button"></script> 
-
 </body>
 </html>
