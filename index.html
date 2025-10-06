@@ -27,7 +27,13 @@
       border-radius: 10px;
       overflow: hidden;
     }
-    .inline-ar-container img {
+    /* .inline-ar-container img {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      display: block;
+    } */
+    #preview1{
       cursor: pointer;
       width: 100%;
       height: 100%;
@@ -70,7 +76,7 @@
     }
     iframe {
       width: 100%;
-      height: 100%; /* 🔥 fill viewport */
+      height: 60vh; /* 🔥 fill viewport */
       border: none;
       display: none;
       transform: translateZ(0);
@@ -80,13 +86,13 @@
     /* 🔥 When container goes fullscreen, iframe stretches fully */
     .inline-ar-container:fullscreen iframe {
       width: 100%;
-      height: 600vh;
+      height: 100%;
       border-radius: 0;
     }
     .inline-ar-container:fullscreen {
       border-radius: 0;
-      max-width: 100%;
-      max-height: 100%;
+      width: 100%;
+      height: 100%;
       margin: 0;
     }
   </style>
